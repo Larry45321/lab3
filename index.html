@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flexbox Layout</title>
+  <title>Grid Layout</title>
   <style>
     * {
       box-sizing: border-box;
@@ -18,14 +18,13 @@
       background-color: #f3f3f3;
     }
     .container {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
       width: 90%;
       max-width: 1200px;
       gap: 10px;
     }
     .box {
-      background-color: #0078D7;
+      background-color: #FF5722;
       color: white;
       display: flex;
       justify-content: center;
@@ -37,37 +36,36 @@
 
     /* Desktop */
     .container {
-      display: flex;
-      flex-wrap: wrap;
+      grid-template-areas:
+        "a b c"
+        "d d d";
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
     }
-    .box.a, .box.b, .box.c {
-      flex: 1 0 calc(33.333% - 10px);
-    }
-    .box.d {
-      flex: 1 0 100%;
-    }
+    .box.a { grid-area: a; }
+    .box.b { grid-area: b; }
+    .box.c { grid-area: c; }
+    .box.d { grid-area: d; }
 
     /* Tablet */
     @media (max-width: 768px) {
-      .box.a {
-        flex: 1 0 50%;
-      }
-      .box.b, .box.c {
-        flex: 1 0 calc(25% - 5px);
-      }
-      .box.d {
-        flex: 1 0 50%;
+      .container {
+        grid-template-areas:
+          "a d"
+          "b c";
+        grid-template-columns: 1fr 1fr;
       }
     }
 
     /* Mobile */
     @media (max-width: 480px) {
       .container {
-        display: block;
-      }
-      .box {
-        width: 100%;
-        margin-bottom: 10px;
+        grid-template-areas:
+          "a"
+          "b"
+          "c"
+          "d";
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -81,4 +79,3 @@
   </div>
 </body>
 </html>
-
