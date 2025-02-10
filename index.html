@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f3f3f3;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 90%;
+      max-width: 1200px;
+      gap: 10px;
+    }
+    .box {
+      background-color: #0078D7;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Desktop */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .box.a, .box.b, .box.c {
+      flex: 1 0 calc(33.333% - 10px);
+    }
+    .box.d {
+      flex: 1 0 100%;
+    }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .box.a {
+        flex: 1 0 50%;
+      }
+      .box.b, .box.c {
+        flex: 1 0 calc(25% - 5px);
+      }
+      .box.d {
+        flex: 1 0 50%;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .container {
+        display: block;
+      }
+      .box {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box a">A</div>
+    <div class="box b">B</div>
+    <div class="box c">C</div>
+    <div class="box d">D</div>
+  </div>
+</body>
+</html>
+
